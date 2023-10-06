@@ -26,17 +26,17 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def emptyline(self):
-        """ Do nothing when an empty line is entered\n"""
+        """ Do nothing when an empty line is entered"""
         pass
 
     def do_quit(self, line):
-        """ Quit command to exit the program\n"""
+        """ Quit command to exit the program """
         return True
 
     def do_EOF(self, line):
         """
-        Enter the command "EOF" to quit the program\n
-        Handles "CTRL D\n"
+        Enter the command "EOF" to quit the program
+        Handles "CTRL D"
         """
         return True
 
