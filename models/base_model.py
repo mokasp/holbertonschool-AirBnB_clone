@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Module containing the class BaseModel """
-
+# kasper done  editing at 7:08 pm 10-5-23
 import datetime
 import uuid
 
@@ -26,7 +26,7 @@ class BaseModel:
         Returns - a dictionary containing the attributes of an instance
     """
 
-    def __init__(self, id=0, created_at=0, updated_at=0):
+    def __init__(self, *args, **kwargs):
         """
         Initializes the objects
 
@@ -39,9 +39,19 @@ class BaseModel:
         updated_at (datetime):
             Current date/time at which an instance was updated)
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+        date_format = '%Y-%m-%dT%H:%M:%S.%f'
+        if kwargs is not None and len(kwargs) != 0:
+            for key in kwargs:
+                if key == 'created_at' or key == 'updated_at':
+                    value = kwargs.get(key)
+                    new_value = datetime.datetime.strptime(value, date_format)
+                    setattr(self, key, new_value)
+                elif key != '__class__':
+                    setattr(self, key, kwargs.get(key))
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
 
     def __str__(self):
         """ Returns a string representation of BaseModel """
