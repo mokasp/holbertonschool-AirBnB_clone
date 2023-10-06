@@ -1,17 +1,18 @@
 #!/usr/bin/python3
 """ Module containing the class BaseModel """
-# kasper done  editing at 7:08 pm 10-5-23
+# kasper editing at 10:53 am 10-6-23
+from models import storage
 import datetime
 import uuid
 
 
-class BaseModel:
+class BaseModel():
     """
     A class representing a BaseModel to create the AirB&B Console
 
     Attributes
     ~~~~~~~~~~
-    id (str):
+    id (string):
         Universally Unique Identifier
     created_at (datetime):
         Current date/time at which an instance was created
@@ -22,6 +23,7 @@ class BaseModel:
     ~~~~~~~
     save():
         Updates attribute "updated_at" with current date/time.
+        Returns - None
     to_dict():
         Returns - a dictionary containing the attributes of an instance
     """
@@ -32,7 +34,7 @@ class BaseModel:
 
         Parameters
         ~~~~~~~~~~
-        id (hex):
+        id (hexadecimal):
             Universally Unique Identifier
         created_at (datetime):
             Current date/time at which an instance was created
@@ -52,6 +54,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
+            storage.new(self.to_dict())
 
     def __str__(self):
         """ Returns a string representation of BaseModel """
@@ -60,6 +63,7 @@ class BaseModel:
     def save(self):
         """ Updates attribute "updated_at" with current date/time """
         self.updated_at = datetime.datetime.now()
+        storage.save()
 
     def to_dict(self):
         """ Updates attribute "updated_at" with current date/time """
