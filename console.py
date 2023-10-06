@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-
+""" Module containing the class HBNBCommand """
 import cmd
 
 
 class HBNBCommand(cmd.Cmd):
     """
     A class that runs the AirB&B Console
+    As the entry point to the command interpreter
 
     Attributes
     ~~~~~~~~~~
