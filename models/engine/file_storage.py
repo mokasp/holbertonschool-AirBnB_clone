@@ -52,27 +52,48 @@ class FileStorage():
 
     def save(self):
         """ serializes __objects to JSON file """
-        self.save_helper()
+        stuff = self.__objects
+        self.__objects = self.save_helper(stuff)
         with open(self.__file_path, "w") as file:
             json.dump(self.__objects, file)
 
-    def save_helper(self):
+    def save_helper(self, main_dictionary):
         """ helper function to resolve serialization issue with date/time """
-        keys = self.__objects.keys()
+        keys = main_dictionary.keys()
         for item in keys:
             main_key = item
-        dictionary = self.__objects.get(main_key)
-        for key in dictionary:
-            if key == 'updated_at':
-                issue = dictionary.get(key)
-        resolve = issue.isoformat()
-        dictionary.update([("updated_at", resolve)])
-        self.__objects.update([(main_key, dictionary)])
+            dictionary = main_dictionary.get(main_key)
+            for key in dictionary:
+                if key == 'updated_at' or key == 'created_at':
+                    issue = dictionary.get(key)
+                    if isinstance(issue, datetime.datetime):
+                        the_key = key
+                        resolve = issue.isoformat()
+                        dictionary.update([(the_key, resolve)])
+                        main_dictionary.update([(main_key, dictionary)])
+        return main_dictionary
 
     def reload(self):
         """ if JSON file exists, deserializes JSON file back to __objects """
         if os.path.exists(self.__file_path):
             with open(self.__file_path, "r", encoding="utf-8") as file:
-                self.__objects = json.load(file)
+                thing = json.load(file)
+                self.__objects = self.reloaded_helper(thing)
+                
         else:
             pass
+
+    def reloaded_helper(self, a_dictionary):
+        keys = a_dictionary.keys()
+        for item in keys:
+            main_key = item
+            dictionary = a_dictionary.get(main_key)
+            for key in dictionary:
+                if key == 'updated_at' or key == 'created_at':
+                    issue = dictionary.get(key)
+                    if isinstance(issue, str):
+                        the_key = key
+                        resolve = datetime.datetime.fromisoformat(issue)
+                        dictionary.update([(the_key, resolve)])
+                    a_dictionary.update([(main_key, dictionary)])
+        return a_dictionary
