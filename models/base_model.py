@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Module containing the class BaseModel """
-# kasper editing at 10:53 am 10-6-23
+# kasper edited at 7:39 am 10-7-23
 from models import storage
 import datetime
 import uuid
