@@ -68,8 +68,9 @@ class BaseModel():
         for key in dictionary:
             if key == 'updated_at' or key == 'created_at':
                 issue = dictionary.get(key)
-                resolve = datetime.datetime.fromisoformat(issue)
-                dictionary.update([(key, resolve)])
+                if isinstance(issue, str):
+                    resolve = datetime.datetime.fromisoformat(issue)
+                    dictionary.update([(key, resolve)])
         return dictionary
 
     def save(self):
