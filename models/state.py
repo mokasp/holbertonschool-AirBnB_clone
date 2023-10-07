@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Module containing the class State """
 # Michael 1:38 PM 10/7
-import BaseModel
+from models.base_model import BaseModel
 
 
 class State(BaseModel):

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Module containing the class Place """
 # Michael 1:54 PM 10/7
-import BaseModel
+from models.base_model import BaseModel
 
 
 class Place(BaseModel):
