@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ module containing class FileStorage that serializes and deserializes
     objects to and from Python and JSON """
-# kasper edited at 7:39am 10/7/23
+# kasper edited at 9:50am 10/7/23
 import datetime
 import json
 import os
@@ -15,10 +15,10 @@ class FileStorage():
     Class Attributes
     ~~~~~~~~~~
     __objects (dictionary):
-        empty on initialization, but will store all objects 
+        empty on initialization, but will store all objects
     __file_path (string):
         path to a JSON file
-        
+
     Instance Methods
     ~~~~~~~
     all():
@@ -38,11 +38,18 @@ class FileStorage():
     def all(self):
         """ returns the dictionary stored in __objects """
         return self.__objects
-    
+
     def new(self, obj):
-        """ creates new instance in the dictionary __objects """
-        self.__objects.update([(f"{obj.get('__class__')}.{obj.get('id')}", obj)])
-    
+        """ creates new instance in the dictionary __objects
+
+            parameters
+            ~~~~~~~~~~
+            obj:
+                object to insert into dictionary
+        """
+        key = f"{obj.get('__class__')}.{obj.get('id')}"
+        self.__objects.update([(key, obj)])
+
     def save(self):
         """ serializes __objects to JSON file """
         self.save_helper()
