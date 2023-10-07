@@ -59,7 +59,6 @@ class FileStorage():
     def save_helper(self):
         """ helper function to resolve serialization issue with date/time """
         keys = self.__objects.keys()
-        print(f" __objects {self.__objects}")
         for item in keys:
             main_key = item
         dictionary = self.__objects.get(main_key)
