@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Module containing the class Amenity """
 # Michael 1:43 PM 10/7
-import BaseModel
+from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
