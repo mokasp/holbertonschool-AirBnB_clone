@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ module containing class FileStorage that serializes and deserializes
     objects to and from Python and JSON """
-# kasper edited at 10:04am 10/8/23
+# Michael edited at 11:09am 10/8/23
 import models
 from models.base_model import BaseModel
 import datetime
@@ -15,64 +15,68 @@ class FileStorage():
     file to instances
 
     Class Attributes
-    ~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~
     __objects (dictionary):
         empty on initialization, but will store all objects
     __file_path (string):
         path to a JSON file
 
     Instance Methods
-    ~~~~~~~
+    ~~~~~~~~~~~~~~~~
     all():
-        Returns - the dictionary stored in __objects
+        Returns - the dictionary stored in __objects.
     new(obj):
-        creates new instance in the dictionary __objects
+        Arguments:
+            obj (self):
+                A new instance of python object.
+        Creates new instance in the dictionary __objects.
     save():
-        serializes __objects to JSON file
+        Serializes __objects to JSON file.
     reload():
-        if JSON file exists, deserializes JSON file back to __objects
+        If JSON file exists, deserializes JSON file back to __objects
     """
-    __file_path = 'file.json'
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """ returns the dictionary stored in __objects """
+        """ Returns the dictionary stored in __objects """
         return self.__objects
 
     def new(self, obj):
-        """ creates new instance in the dictionary __objects
+        """ Creates new instance in the dictionary __objects
 
-            parameters
+            Parameters
             ~~~~~~~~~~
-            obj:
-                object to insert into dictionary
+            obj (self):
+                A new instance of python object.
         """
-        temp_dict = obj.to_dict()
-        class_name = temp_dict.get('__class__')
+        class_dictionary = obj.to_dict()
+        class_name = class_dictionary.get('__class__')
         key = f"{class_name}.{obj.id}"
         self.__objects.update([(key, obj)])
 
     def save(self):
-        """ serializes Python objects to JSON file """
-        temp_object = self.__objects.copy()
-        new_dict = {}
-        for key in temp_object:
-            py_obj = temp_object.get(key)
-            new_dict[key] = py_obj.to_dict()
+        """ Serializes Python objects to JSON file """
+        objects_copy = self.__objects.copy()
+        new_dictionary = {}
+        for key in objects_copy:
+            python_obj = objects_copy.get(key)
+            new_dictionary[key] = python_obj.to_dict()
         with open(self.__file_path, "w") as file:
-            json.dump(new_dict, file)
+            json.dump(new_dictionary, file)
 
     def reload(self):
-        """ if JSON file exists, deserializes JSON file back to python
-            Objects """
-        temp_dict = {"BaseModel": BaseModel}
+        """ If JSON file exists, deserializes JSON file back to python
+            objects """
+        classes = {"BaseModel": BaseModel}
         if os.path.exists(self.__file_path):
             with open(self.__file_path, "r", encoding="utf-8") as file:
                 loaded = json.load(file)
                 for key in loaded:
-                    thing = loaded.get(key)
-                    value = temp_dict[thing.get('__class__')](**thing)
-                    loaded.update([(key, value)])
+                    old_value = loaded.get(key)
+                    class_name = old_value.get('__class__')
+                    new_value = classes[class_name](**old_value)
+                    loaded.update([(key, new_value)])
                 self.__objects = loaded
         else:
             pass
