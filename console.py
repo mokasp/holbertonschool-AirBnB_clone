@@ -174,12 +174,6 @@ class HBNBCommand(cmd.Cmd):
                     instance_list.append(str(dictionary[key]))
             print(instance_list)
 
-    def do_test(self, line):
-        """
-        TEST STUFF
-        """
-        print(models.storage.__class__.__name__)
-
     def do_update(self, line):
         """
         Enter the command:
