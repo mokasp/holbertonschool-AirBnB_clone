@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Module containing the class BaseModel """
-# kasper edited at 9:50 am 10-7-23
-from models import storage
+# kasper edited at 9:54 am 10-8-23
+import models
 import datetime
 import uuid
 
@@ -24,9 +24,6 @@ class BaseModel():
     save():
         Updates attribute "updated_at" with current date/time.
         Returns - None
-    str_helper():
-        helper function to resolve format issue with date/time
-        Returns - correctly formatted version of __dict__
     to_dict():
         Returns - a dictionary containing the attributes of an instance
     """
@@ -57,34 +54,24 @@ class BaseModel():
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
-            storage.new(self.to_dict())
+            models.storage.new(self)
 
     def __str__(self):
         """ Returns a string representation of BaseModel """
-        dictionary = self.str_helper(self.__dict__)
-        return f"[{self.__class__.__name__}] ({self.id}) {dictionary}"
-
-    def str_helper(self, dictionary):
-        for key in dictionary:
-            if key == 'updated_at' or key == 'created_at':
-                issue = dictionary.get(key)
-                if isinstance(issue, str):
-                    resolve = datetime.datetime.fromisoformat(issue)
-                    dictionary.update([(key, resolve)])
-        return dictionary
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """ Updates attribute "updated_at" with current date/time """
         self.updated_at = datetime.datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """ Updates attribute "updated_at" with current date/time """
-        attributes_dict = self.__dict__
+        attributes_dict = self.__dict__.copy()
         c_at = self.created_at
         u_at = self.updated_at
         c_at = c_at.isoformat()
-        c_at = u_at.isoformat()
+        u_at = u_at.isoformat()
         attributes_dict.update(created_at=c_at, updated_at=u_at)
         attributes_dict.update([("__class__", self.__class__.__name__)])
 

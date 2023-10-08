@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """ module containing class FileStorage that serializes and deserializes
     objects to and from Python and JSON """
-# kasper edited at 9:50am 10/7/23
+# kasper edited at 10:04am 10/8/23
+import models
+from models.base_model import BaseModel
 import datetime
 import json
 import os
@@ -27,8 +29,6 @@ class FileStorage():
         creates new instance in the dictionary __objects
     save():
         serializes __objects to JSON file
-    save_helper():
-        helper function to resolve serialization issue with date/time
     reload():
         if JSON file exists, deserializes JSON file back to __objects
     """
@@ -47,53 +47,32 @@ class FileStorage():
             obj:
                 object to insert into dictionary
         """
-        key = f"{obj.get('__class__')}.{obj.get('id')}"
+        temp_dict = obj.to_dict()
+        class_name = temp_dict.get('__class__')
+        key = f"{class_name}.{obj.id}"
         self.__objects.update([(key, obj)])
 
     def save(self):
-        """ serializes __objects to JSON file """
-        stuff = self.__objects
-        self.__objects = self.save_helper(stuff)
+        """ serializes Python objects to JSON file """
+        temp_object = self.__objects.copy()
+        new_dict = {}
+        for key in temp_object:
+            py_obj = temp_object.get(key)
+            new_dict[key] = py_obj.to_dict()
         with open(self.__file_path, "w") as file:
-            json.dump(self.__objects, file)
-
-    def save_helper(self, main_dictionary):
-        """ helper function to resolve serialization issue with date/time """
-        keys = main_dictionary.keys()
-        for item in keys:
-            main_key = item
-            dictionary = main_dictionary.get(main_key)
-            for key in dictionary:
-                if key == 'updated_at' or key == 'created_at':
-                    issue = dictionary.get(key)
-                    if isinstance(issue, datetime.datetime):
-                        the_key = key
-                        resolve = issue.isoformat()
-                        dictionary.update([(the_key, resolve)])
-                        main_dictionary.update([(main_key, dictionary)])
-        return main_dictionary
+            json.dump(new_dict, file)
 
     def reload(self):
-        """ if JSON file exists, deserializes JSON file back to __objects """
+        """ if JSON file exists, deserializes JSON file back to python
+            Objects """
+        temp_dict = {"BaseModel": BaseModel}
         if os.path.exists(self.__file_path):
             with open(self.__file_path, "r", encoding="utf-8") as file:
-                thing = json.load(file)
-                self.__objects = self.reloaded_helper(thing)
-                
+                loaded = json.load(file)
+                for key in loaded:
+                    thing = loaded.get(key)
+                    value = temp_dict[thing.get('__class__')](**thing)
+                    loaded.update([(key, value)])
+                self.__objects = loaded
         else:
             pass
-
-    def reloaded_helper(self, a_dictionary):
-        keys = a_dictionary.keys()
-        for item in keys:
-            main_key = item
-            dictionary = a_dictionary.get(main_key)
-            for key in dictionary:
-                if key == 'updated_at' or key == 'created_at':
-                    issue = dictionary.get(key)
-                    if isinstance(issue, str):
-                        the_key = key
-                        resolve = datetime.datetime.fromisoformat(issue)
-                        dictionary.update([(the_key, resolve)])
-                    a_dictionary.update([(main_key, dictionary)])
-        return a_dictionary
