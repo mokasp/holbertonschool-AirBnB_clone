@@ -162,8 +162,9 @@ class HBNBCommand(cmd.Cmd):
         instance_list = []
 
         if len(line) == 0:
-            for key in models.storage.all():
-                print(models.storage.all()[key])
+            for key in dictionary:
+                instance_list.append(str(dictionary[key]))
+            print(instance_list)
         elif args[0] not in self.classes:
             print("** class doesn\'t exist **")
             return
