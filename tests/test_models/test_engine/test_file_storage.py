@@ -64,6 +64,15 @@ class TestFileStorage(unittest.TestCase):
         new = reload_storage_2.all()
         self.assertNotEqual(new, old)
 
+    def test_save(self):
+        """ tests save method """
+        save_storage = FileStorage()
+        old = save_storage.all()
+        BaseModel()
+        save_storage.save()
+        new = save_storage.all()
+        self.assertNotEqual(new, old)
+
 
 if __name__ == 'main__':
     unittest.main()
