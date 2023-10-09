@@ -2,6 +2,7 @@
 """ File to test file_storage """
 import unittest
 import os
+import json
 import datetime
 
 from models.base_model import BaseModel
@@ -66,12 +67,17 @@ class TestFileStorage(unittest.TestCase):
 
     def test_save(self):
         """ tests save method """
+        os.remove("file.json")
         save_storage = FileStorage()
-        old = save_storage.all()
+        with self.assertRaises(FileNotFoundError):
+            with open('file.json', "r") as file:
+                saved = json.load(file)
         BaseModel()
         save_storage.save()
-        new = save_storage.all()
-        self.assertNotEqual(new, old)
+        with open('file.json', "r") as file:
+            saved = json.load(file)
+        from_object = save_storage.all()
+        self.assertEqual(saved.keys(), from_object.keys())
 
 
 if __name__ == 'main__':
