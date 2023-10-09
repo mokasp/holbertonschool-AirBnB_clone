@@ -41,6 +41,14 @@ class TestBaseModel(unittest.TestCase):
         first_update = my_model.updated_at
         self.assertNotEqual(first_save, first_update)
 
+    def test_init7(self):
+        """ Tests updated_at vs created_at """
+        my_model = BaseModel()
+        first_id = my_model.id
+        my_model2 = BaseModel()
+        second_id = my_model2.id
+        self.assertNotEqual(first_id, second_id)
+
     def test_save(self):
         """ Tests created_at and updated_at are the same """
         my_model = BaseModel()
@@ -75,3 +83,6 @@ class TestBaseModel(unittest.TestCase):
         dictionary = my_model.to_dict()
         value = dictionary.get("created_at")
         self.assertIsInstance(value, str)
+
+if __name__ == "__main__":
+    unittest.main()
