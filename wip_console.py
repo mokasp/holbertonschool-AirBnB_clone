@@ -89,6 +89,7 @@ class HBNBCommand(cmd.Cmd):
         object_type = args[0]
         try:
             new_object = self.classes[object_type]()
+            models.storage.save()
             print(new_object.id) # Completed
         except KeyError:
             print("** class doesn\'t exist **") # Completed
@@ -148,10 +149,12 @@ class HBNBCommand(cmd.Cmd):
         """
         args = line.split()
         dictionary = models.storage.all()
+        instance_list = []
 
         if len(line) == 0:
             for key in dictionary:
-                print(dictionary[key])
+                instance_list.append(str(dictionary[key]))
+            print(instance_list)
         elif args[0] not in self.classes:
             print("** class doesn\'t exist **") # Completed
             return
@@ -159,8 +162,7 @@ class HBNBCommand(cmd.Cmd):
             for key in dictionary:
                 var = key.split(".")
                 if var[0] == args[0]:
-                    print(dictionary.get(key)) # Completed
-# Completed
+                    print("~~~ tbc ~~~")
 
     def do_test(self, line):
         """
@@ -174,32 +176,34 @@ class HBNBCommand(cmd.Cmd):
         update <class> <id> <new attribute> "<new attribute value>"
         to add a new attribute to an instance of the specific class.
         """
-        print("update")
+        args = line.split()
+        key = f"{args[0]}.{args[1]}"
+        dictionary = models.storage.all()
         if len(line) == 0:
             print("** class name missing **")
             return
-        args = line.split()
-        if args[0] not in self.classes:
+        elif args[0] not in self.classes:
             print("** class doesn\'t exist **")
             return
         elif len(args) == 1:
             print("** instance id missing **")
             return
-        key = f"{args[0]}.{args[1]}"
-        all_of_them = models.storage.all()
-        try:
-            print(all_of_them[key])
-        except KeyError:
+        elif key not in dictionary:
             print("** no instance found **")
             return
-        if len(args) == 2:
-            print("** attribute name missing **")
-            return
-        elif len(args) == 3:
-            print("** TO BE CODED **")
-            return
         else:
-            print("~~~ TO BE CODED ~~")
+            if len(args) == 2:
+                print("** attribute name missing **")
+                return
+            elif len(args) == 3:
+                print("** value missing **")
+                return
+            the_object = dictionary.get(key)
+            print(the_object)
+            #setattr(the_object, args[2], args[3])
+            #all_of_them.update([(key, the_object)])
+            #models.storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
