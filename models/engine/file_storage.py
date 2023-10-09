@@ -46,7 +46,8 @@ class FileStorage():
 
     def all(self):
         """ Returns the dictionary stored in __objects """
-        return self.__objects
+        objects_dictionary = self.__objects.copy()
+        return objects_dictionary
 
     def new(self, obj):
         """ Creates new instance in the dictionary __objects
