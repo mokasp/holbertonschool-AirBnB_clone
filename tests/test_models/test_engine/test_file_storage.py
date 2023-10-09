@@ -45,12 +45,23 @@ class TestFileStorage(unittest.TestCase):
         self.assertIsInstance(thing.all(), dict)
 
     def test_new(self):
-        """ test for """
+        """ test for new method """
         new_storage = FileStorage()
         old = new_storage.all()
         BaseModel()
         new_storage.save()
         new = new_storage.all()
+        self.assertNotEqual(new, old)
+
+    def test_reload(self):
+        """ test for reload method"""
+        reload_storage_1 = FileStorage()
+        old = reload_storage_1.all()
+        BaseModel()
+        reload_storage_1.save()
+        reload_storage_2 = FileStorage()
+        reload_storage_2.reload()
+        new = reload_storage_2.all()
         self.assertNotEqual(new, old)
 
 
