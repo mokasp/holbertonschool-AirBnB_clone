@@ -5,6 +5,7 @@ import unittest
 import datetime
 from models.base_model import BaseModel
 
+
 class TestBaseModel(unittest.TestCase):
     """ Class to test BaseModel """
 
@@ -31,7 +32,7 @@ class TestBaseModel(unittest.TestCase):
     def test_init5(self):
         """  Tests updated_at data type """
         self.assertIsNotNone(BaseModel().updated_at)
-    
+
     def test_init6(self):
         """ Tests updated_at vs created_at """
         my_model = BaseModel()
@@ -39,6 +40,14 @@ class TestBaseModel(unittest.TestCase):
         my_model.save()
         first_update = my_model.updated_at
         self.assertNotEqual(first_save, first_update)
+
+    def test_init7(self):
+        """ Tests updated_at vs created_at """
+        my_model = BaseModel()
+        first_id = my_model.id
+        my_model2 = BaseModel()
+        second_id = my_model2.id
+        self.assertNotEqual(first_id, second_id)
 
     def test_save(self):
         """ Tests created_at and updated_at are the same """
@@ -54,11 +63,26 @@ class TestBaseModel(unittest.TestCase):
         strep = f"[{model.__class__.__name__}] ({model.id}) {model.__dict__}"
         var = model.__str__()
         self.assertEqual(var, strep)
-    """
 
-    to_dict
-    self.assertIsInstance - check for type
+    def test_to_dict(self):
+        """ Tests the type of to_dict """
+        my_model = BaseModel()
+        dictionary = my_model.to_dict()
+        self.assertIsInstance(dictionary, dict)
 
-    str 
-    self.assertEqual <--- This is the one I don't understand
-    """
+    def test_to_dict2(self):
+        """ Tests the type of updated_at inside dict """
+        my_model = BaseModel()
+        dictionary = my_model.to_dict()
+        value = dictionary.get("updated_at")
+        self.assertIsInstance(value, str)
+
+    def test_to_dict3(self):
+        """ Tests the type of created_at inside dict """
+        my_model = BaseModel()
+        dictionary = my_model.to_dict()
+        value = dictionary.get("created_at")
+        self.assertIsInstance(value, str)
+
+if __name__ == "__main__":
+    unittest.main()
