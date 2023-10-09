@@ -2,22 +2,11 @@
 """ File to test base_model.py """
 
 import unittest
-import os
 import datetime
 from models.base_model import BaseModel
 
 class TestBaseModel(unittest.TestCase):
     """ Class to test BaseModel """
-
-    def setUp(self):
-        """ Setting up """
-        self.models = BaseModel()
-        self.models.save()
-
-    def tearDown(self):
-        """ Tearing Down """
-        del self.models
-        os.remove("file.json")
 
     def test_init(self):
         """  Tests id data type """
@@ -58,12 +47,14 @@ class TestBaseModel(unittest.TestCase):
         my_model.save()
         self.assertNotEqual(my_model.updated_at, first_update)
 
-
+    def test_str(self):
+        """ Tests the string representation of BaseModel """
+        model = BaseModel()
+        ID_Number = model.id
+        strep = f"[{model.__class__.__name__}] ({model.id}) {model.__dict__}"
+        var = model.__str__()
+        self.assertEqual(var, strep)
     """
-
-
-    save
-    self.assertNotEqual - save
 
     to_dict
     self.assertIsInstance - check for type
