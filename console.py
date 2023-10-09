@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Module containing the class HBNBCommand """
-# Michael Updated at 1:50 PM 10/8
+# TURNED IN TO CHECKER
 import cmd
 import models
 import re
