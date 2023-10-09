@@ -3,10 +3,16 @@
     objects to and from Python and JSON """
 # Michael edited at 11:09am 10/8/23
 import models
-from models.base_model import BaseModel
 import datetime
 import json
 import os
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 
 class FileStorage():
@@ -68,7 +74,15 @@ class FileStorage():
     def reload(self):
         """ If JSON file exists, deserializes JSON file back to python
             objects """
-        classes = {"BaseModel": BaseModel}
+        classes = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Place": Place,
+            "Review": Review
+        }
         if os.path.exists(self.__file_path):
             with open(self.__file_path, "r", encoding="utf-8") as file:
                 loaded = json.load(file)
