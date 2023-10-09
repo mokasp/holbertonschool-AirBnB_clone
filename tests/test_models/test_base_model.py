@@ -84,5 +84,6 @@ class TestBaseModel(unittest.TestCase):
         value = dictionary.get("created_at")
         self.assertIsInstance(value, str)
 
+
 if __name__ == "__main__":
     unittest.main()
