@@ -5,15 +5,45 @@
 
 **Any comments or feedback is greatly appreciated!** <br>
 [Contact Us](https://github.com/michaellgans/holbertonschool-AirBnB_clone/blob/main/AUTHORS)
+
 ## AirB&B - Looking Ahead
-- description of the project
+
+&nbsp;&nbsp;&nbsp;&nbsp;The AirB&B website allows users to either list properties they would like to host on the website, or browse properties they would like to rent for a vacation!  The overarching project is broken down into six layers: <br>
+
+<details><summary>The Console</summary>
+
+>Title Goes Here
+>
+>- Bullet <br>
+>- Bullet <br>
+>- Bullet <br>
+>- Bullet <br></details>
+
+<details><summary>Web Static</summary>
+
+>Title Goes Here
+>
+>- Bullet <br>
+>- Bullet <br>
+>- Bullet <br>
+>- Bullet <br></details>
+
+
 ## AirB&B - The Console
+
 - description of the command interpreter:
+
 ### How to Start the Console
+
 - how to start it
+- 
 ### How to Use the Console
+
 - how to use it
+
 ### examples
+
 - To be added
-##### Resources
+
+#### Resources
 - [Original Website](https://www.airbnb.com/)
