@@ -76,6 +76,18 @@ class TestFileStorage(unittest.TestCase):
         new = reload_storage_2.all()
         self.assertNotEqual(new, old)
 
+    def test_destroy(self):
+        """ test to check destroy helper method """
+        new_storage = FileStorage()
+        obj = BaseModel()
+        key = f"BaseModel.{obj.id}"
+        new_storage.save()
+        old = new_storage.all()
+        new_storage.destroy_this(key)
+        new_storage.save()
+        new = new_storage.all()
+        self.assertNotEqual(new, old)
+
 
 if __name__ == "__main__":
     unittest.main()
