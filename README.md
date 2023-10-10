@@ -31,27 +31,27 @@
 
 <details><summary>MySQL Storage</summary>
 
-&nbsp;&nbsp;&nbsp;&nbsp;Web Framework - Templating<br>
-- Bullet
-- Bullet
-- Bullet
-- Bullet</details>
+&nbsp;&nbsp;&nbsp;&nbsp;The third step is to upgrade our storage engine by replacing it with a fully functioning database system.<br>
+- Learning Objectvies
+  - SQL/MySQL
+  - Design and create a database for storage.
+  - Map our models to a table in the database using Object-Relational Mapping (ORM).</details>
 
 <details><summary>RESTful API</summary>
 
 &nbsp;&nbsp;&nbsp;&nbsp;Title Goes Here<br>
-- Bullet
-- Bullet
-- Bullet
-- Bullet</details>
+- Learning Objectvies
+  - HTML/CSS
+  - Create the HTML of your application.
+  - Create the template of each object.</details>
 
 <details><summary>Web Dynamic</summary>
 
 &nbsp;&nbsp;&nbsp;&nbsp;Title Goes Here<br>
-- Bullet
-- Bullet
-- Bullet
-- Bullet</details>
+- Learning Objectvies
+  - HTML/CSS
+  - Create the HTML of your application.
+  - Create the template of each object.</details>
 
 ## AirB&B - The Console
 
