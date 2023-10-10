@@ -63,7 +63,7 @@ class TestFileStorage(unittest.TestCase):
         old = new_storage2.__objects
         obj = BaseModel()
         new_storage2.new(obj)
-        self.assertNotEqual(obj, old)
+        self.assertNotEqual(new_storage2.all(), old)
 
     def test_reload(self):
         """ test for reload method"""
