@@ -12,12 +12,14 @@
 
 <details><summary>The Console</summary>
 
->Title Goes Here
->
->- Bullet <br>
->- Bullet <br>
->- Bullet <br>
->- Bullet <br></details>
+&nbsp;&nbsp;&nbsp;&nbsp;The first step is to create a storage system which will allow us to save and reload objects created. Because of this, multiple objects can be created inside the command interpreter and saved for later use once the RestAPI is created.<br>
+- Creates a data model.
+- Manages objects by interacting with the console, a command line interpereter.
+  - Create objects
+  - Update objects
+  - Display objects
+  - Destroy objects
+- Saves objects to a JSON file.</details>
 
 <details><summary>Web Static</summary>
 
