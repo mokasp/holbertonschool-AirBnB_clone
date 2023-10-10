@@ -22,7 +22,7 @@
   - Update objects
   - Display objects
   - Destroy objects
-- Saves objects to a JSON file.</details>
+- Saves objects to a JSON file while managing the flow of serialization into JSON readable strings and deserialization back into Python objects.</details>
 
 <details><summary>Web Static</summary>
 
