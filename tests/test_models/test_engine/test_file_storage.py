@@ -87,6 +87,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertNotEqual(new, old)
 
     def test_save(self):
+        """ test to see if save creates a file """
         save_storage = FileStorage()
         if os.path.exists("file.json"):
             os.remove("file.json")
