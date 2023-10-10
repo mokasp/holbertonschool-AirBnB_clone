@@ -66,9 +66,18 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;A command line interpreter is a program that interacts with a file storage engine, which allows the user to create, destroy, modify, and display objects stored in a JSON file.  The console is programmed through a driver file (`console.py`), which accepts interactive and non-interactive commands, meaning that either a machine or a person can manipulate the program.  By using the module `cmd`, we were able to write our own commands, as well as have them display custom help text for easy troubleshooting.
 
-Command | Description
---- | ---
-`all ` | Displays all objects currently stored.
+Command | Description | Help Text
+--- | --- | ---
+`all` | Displays all objects currently stored. | Enter the command "all" to print everything in storage.
+`all <class>` | Displays all objects currently stored with indicated class. | Enter the command "all <class>" to print anything created with that class.
+`create` | Creates an object and generates a unique ID. | Enter the command "create <class>" to make a new Object.
+`destroy` | Destroys an object. | Enter the command "destroy <class> <id>" to remove that specific object
+`EOF` | Exits the program and returns to the command line. | Enter the command "EOF" to quit the program
+`help` | Displays all commands available to the user. | List available commands with "help" or detailed help with "help cmd".
+`help <command>` | Displays the help text about the command. | List available commands with "help" or detailed help with "help cmd".
+`quit` | Exits the program and returns to the command line. | Enter the command "quit" to exit the program.
+`show` | Displays the object indicated by ID. | Enter the command "show <class> <id>" to display that specific object
+`update` | Updates an existing object with a new attribute and value. | Enter the command: update <class> <id> <new attribute> "<new attribute value>" to add a new attribute to an instance of the specific class.
 
 FILESTORAGE: manages serialization and deserialization flow of Python Objects and JSON objects. Also allows for creation and deletion on Objects, while keeping the JSON file updated. 
 
