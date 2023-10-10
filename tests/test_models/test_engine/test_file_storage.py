@@ -76,5 +76,9 @@ class TestFileStorage(unittest.TestCase):
         new = reload_storage_2.all()
         self.assertNotEqual(new, old)
 
-if __name__ == 'main__':
+    def test_reload(self):
+        """ test to check if content of json file is same as to_dict """
+        
+
+if __name__ == '__main__':
     unittest.main()
