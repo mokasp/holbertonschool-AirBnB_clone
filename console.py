@@ -209,13 +209,12 @@ class HBNBCommand(cmd.Cmd):
         strings = re.findall('"([^"]*)"', line)
         attribute_key = args[2]
         attribute_value = strings[0]
-        if key in object_dict:
-            print(attribute_value)
-            if isinstance(object_dict.get(key), str):
+        if attribute_key in object_dict:
+            if isinstance(object_dict.get(attribute_key), str):
                 attribute_value = str(attribute_value)
-            elif isinstance(object_dict.get(key), int):
+            elif isinstance(object_dict.get(attribute_key), int):
                 attribute_value = int(attribute_value)
-            elif isinstance(object_dict.get(key), float):
+            elif isinstance(object_dict.get(attribute_key), float):
                 attribute_value = float(attribute_value)
         setattr(the_object, attribute_key, attribute_value)
         models.storage.save()
