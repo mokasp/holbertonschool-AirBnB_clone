@@ -58,12 +58,12 @@ class TestFileStorage(unittest.TestCase):
 
     def test_filestoragenew(self):
         """ test that direct call to new works """
-        new_storage2 = FileStorage()
-        new_storage2.__objects = {}
-        old = new_storage2.__objects
         obj = BaseModel()
-        new_storage2.new(obj)
-        self.assertNotEqual(new_storage2.all(), old)
+        new_storage = FileStorage()
+        new_storage.__objects = {}
+        old = new_storage.__objects
+        new_storage.new(obj)
+        self.assertNotEqual(new_storage.all(), old)
 
     def test_reload(self):
         """ test for reload method"""
