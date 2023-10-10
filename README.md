@@ -64,7 +64,9 @@
 
 ## AirB&B - The Console
 
-&nbsp;&nbsp;&nbsp;&nbsp;A command line interpreter is a program that interacts with a file storage engine, which allows the user to create, destroy, modify, and display objects stored in a JSON file.  The console is programmed through a driver file (`console.py`), which accepts interactive and non-interactive commands, meaning that either a machine or a person can manipulate the program.  By using the module `cmd`, we were able to write our own commands, as well as have them display custom help text for easy troubleshooting.
+&nbsp;&nbsp;&nbsp;&nbsp;A command line interpreter is a program that interacts with a file storage engine, which allows the user to create, destroy, modify, and display objects stored in a JSON file.  The console is programmed through a [driver file](https://github.com/michaellgans/holbertonschool-AirBnB_clone/blob/main/console.py), which accepts interactive and non-interactive commands, meaning that either a machine or a person can manipulate the program.  By using the module `cmd`, we were able to write our own commands, as well as have them display custom help text for easy troubleshooting.
+
+### Commands Table
 
 Command | Description | Help Text
 --- | --- | ---
@@ -79,11 +81,9 @@ Command | Description | Help Text
 `show` | Displays the object indicated by ID. | Enter the command "show <class> <id>" to display that specific object
 `update` | Updates an existing object with a new attribute and value. | Enter the command: update <class> <id> <new attribute> "<new attribute value>" to add a new attribute to an instance of the specific class.
 
-FILESTORAGE: manages serialization and deserialization flow of Python Objects and JSON objects. Also allows for creation and deletion on Objects, while keeping the JSON file updated. 
-
- 
-
-BASEMODEL: the base of all classes that will allow all classes to have a unique ID and the times in which the instances of the classes were created or updated at. Allows for all classes inherited from it to accession function that reformats a dictionary to be JSON serializable, as well as saving new and updated instances to the Storage. 
+### Additional Files
+- [Base Model](https://github.com/michaellgans/holbertonschool-AirBnB_clone/blob/main/models/base_model.py) - The base of all classes that will allow all classes to have a unique ID and the times in which the instances of the classes were created or updated at. Allows for all classes inherited from it to accession function that reformats a dictionary to be JSON serializable, as well as saving new and updated instances to the Storage.
+- [File Storage](https://github.com/michaellgans/holbertonschool-AirBnB_clone/blob/main/models/engine/file_storage.py) - manages serialization and deserialization flow of Python Objects and JSON objects. Also allows for creation and deletion of objects, while keeping the JSON file updated. 
 
 ### How to Start the Console
 
