@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ Module containing the class Place """
-# Michael 1:54 PM 10/7
 from models.base_model import BaseModel
 
 

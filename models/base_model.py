@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ Module containing the class BaseModel """
-# Michael edited at 10:47 am 10-8-23
 import models
 import datetime
 import uuid
