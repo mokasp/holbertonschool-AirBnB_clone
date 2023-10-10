@@ -64,7 +64,17 @@
 
 ## AirB&B - The Console
 
-- description of the command interpreter:
+&nbsp;&nbsp;&nbsp;&nbsp;A command line interpreter is a program that interacts with a file storage engine, which allows the user to create, destroy, modify, and display objects stored in a JSON file.  The console is programmed through a driver file (`console.py`), which accepts interactive and non-interactive commands, meaning that either a machine or a person can manipulate the program.  By using the module `cmd`, we were able to write our own commands, as well as have them display custom help text for easy troubleshooting.
+
+Command | Description
+--- | ---
+`all ` | Displays all objects currently stored.
+
+FILESTORAGE: manages serialization and deserialization flow of Python Objects and JSON objects. Also allows for creation and deletion on Objects, while keeping the JSON file updated. 
+
+ 
+
+BASEMODEL: the base of all classes that will allow all classes to have a unique ID and the times in which the instances of the classes were created or updated at. Allows for all classes inherited from it to accession function that reformats a dictionary to be JSON serializable, as well as saving new and updated instances to the Storage. 
 
 ### How to Start the Console
 
