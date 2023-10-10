@@ -82,20 +82,94 @@ Command | Description | Help Text
 `update` | Updates an existing object with a new attribute and value. | Enter the command: update <class> <id> <new attribute> "<new attribute value>" to add a new attribute to an instance of the specific class.
 
 ### Additional Files
+
 - [Base Model](https://github.com/michaellgans/holbertonschool-AirBnB_clone/blob/main/models/base_model.py) - The base of all classes that will allow all classes to have a unique ID and the times in which the instances of the classes were created or updated at. Allows for all classes inherited from it to accession function that reformats a dictionary to be JSON serializable, as well as saving new and updated instances to the Storage.
 - [File Storage](https://github.com/michaellgans/holbertonschool-AirBnB_clone/blob/main/models/engine/file_storage.py) - manages serialization and deserialization flow of Python Objects and JSON objects. Also allows for creation and deletion of objects, while keeping the JSON file updated. 
 
 ### How to Start the Console
+To start the console itself, please clone into our repository, then run the file shown here:
+```
+user@User:~/airbnb$ ./console.py 
+(hbnb)
+```
 
-- how to start it
-- 
 ### How to Use the Console
 
-- how to use it
+Here are different examples of how each command would work inside the console!  Please refer to the commands table for more information.
 
-### examples
+#### All - objects are created, then displayed with "all"
 
-- To be added
+```
+(hbnb) create Place
+530702b8-d623-49a5-897e-3ec27bc770e9
+(hbnb) create Review
+d2a8861b-71b8-4fa4-bb11-0930316e8256
+(hbnb) create Amenity
+8afed07d-64de-47fc-add7-fbbef4914ccc
+(hbnb)
+
+(hbnb) all
+["[User] (630b271e-fffb-487d-b2a6-0bc7e0af4136) {'id': '630b271e-fffb-487d-b2a6-0bc7e0af4136', 'created_at': datetime.datetime(2023, 10, 10, 14, 33, 52, 411036), 'updated_at': datetime.datetime(2023, 10, 10, 14, 33, 52, 411066), 'age': 45}", "[Place] (530702b8-d623-49a5-897e-3ec27bc770e9) {'id': '530702b8-d623-49a5-897e-3ec27bc770e9', 'created_at': datetime.datetime(2023, 10, 10, 14, 54, 51, 133612), 'updated_at': datetime.datetime(2023, 10, 10, 14, 54, 51, 133629)}", "[Review] (d2a8861b-71b8-4fa4-bb11-0930316e8256) {'id': 'd2a8861b-71b8-4fa4-bb11-0930316e8256', 'created_at': datetime.datetime(2023, 10, 10, 14, 54, 57, 239460), 'updated_at': datetime.datetime(2023, 10, 10, 14, 54, 57, 239471)}", "[Amenity] (8afed07d-64de-47fc-add7-fbbef4914ccc) {'id': '8afed07d-64de-47fc-add7-fbbef4914ccc', 'created_at': datetime.datetime(2023, 10, 10, 14, 55, 2, 192254), 'updated_at': datetime.datetime(2023, 10, 10, 14, 55, 2, 192266)}"]
+(hbnb)
+```
+
+#### Create - an object with the class "User" is created
+
+```
+(hbnb) create User
+630b271e-fffb-487d-b2a6-0bc7e0af4136
+(hbnb)
+```
+
+#### Destroy - an object with the class "User" is destroyed
+
+```
+(hbnb) destroy User 630b271e-fffb-487d-b2a6-0bc7e0af4136
+```
+
+#### Help - all commands are displayed / the "create" command's help text is displayed
+
+```
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show  update
+
+(hbnb)
+```
+```
+(hbnb) help create
+
+        Enter the command "create <class>" to make a new Object.
+        
+(hbnb)
+```
+#### Quit - the program is exitted
+
+```
+(hbnb) quit
+```
+
+#### Show - the object with the class "User" is displayed
+
+```
+(hbnb) show User 630b271e-fffb-487d-b2a6-0bc7e0af4136
+[User] (630b271e-fffb-487d-b2a6-0bc7e0af4136) {'id': '630b271e-fffb-487d-b2a6-0bc7e0af4136', 'created_at': datetime.datetime(2023, 10, 10, 14, 33, 52, 411036), 'updated_at': datetime.datetime(2023, 10, 10, 14, 33, 52, 411066)}
+(hbnb)
+```
+
+#### Update - The object with the class "User" is updated, then displayed
+
+```
+(hbnb) update User 630b271e-fffb-487d-b2a6-0bc7e0af4136 age "45"
+(hbnb) show User 630b271e-fffb-487d-b2a6-0bc7e0af4136
+[User] (630b271e-fffb-487d-b2a6-0bc7e0af4136) {'id': '630b271e-fffb-487d-b2a6-0bc7e0af4136', 'created_at': datetime.datetime(2023, 10, 10, 14, 33, 52, 411036), 'updated_at': datetime.datetime(2023, 10, 10, 14, 33, 52, 411066), 'age': 45}
+```
+
+### Learning Objectives
+
+blah blah blah
 
 #### Resources
 - [Original Website](https://www.airbnb.com/)
