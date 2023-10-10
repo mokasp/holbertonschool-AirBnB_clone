@@ -167,9 +167,9 @@ EOF  all  create  destroy  help  quit  show  update
 [User] (630b271e-fffb-487d-b2a6-0bc7e0af4136) {'id': '630b271e-fffb-487d-b2a6-0bc7e0af4136', 'created_at': datetime.datetime(2023, 10, 10, 14, 33, 52, 411036), 'updated_at': datetime.datetime(2023, 10, 10, 14, 33, 52, 411066), 'age': 45}
 ```
 
-### Learning Objectives
-
-blah blah blah
-
 #### Resources
 - [Original Website](https://www.airbnb.com/)
+- [CMD Module](https://docs.python.org/3/library/cmd.html)
+- [CMD](https://pymotw.com/2/cmd/)
+- [Organization](https://miro.com/)
+- [Git](https://ohshitgit.com/)
