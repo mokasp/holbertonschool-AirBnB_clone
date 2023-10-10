@@ -203,8 +203,21 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return
         the_object = dictionary.get(key)
+        object_to_dict = the_object.to_dict()
+        class_name = object_to_dict.get('__class__')
+        object_dict = self.classes[class_name].__dict__
         strings = re.findall('"([^"]*)"', line)
-        setattr(the_object, args[2], strings[0])
+        key = args[2]
+        value = strings[0]
+        if key in object_dict:
+            print(value)
+            if isinstance(object_dict.get(key), str):
+                value = str(value)
+            elif isinstance(object_dict.get(key), int):
+                value = int(value)
+            elif isinstance(object_dict.get(key), float):
+                value = float(value) 
+        setattr(the_object, key, value)
         models.storage.save()
 
 
