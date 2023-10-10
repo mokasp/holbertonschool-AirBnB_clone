@@ -163,7 +163,8 @@ class HBNBCommand(cmd.Cmd):
         if len(line) == 0:
             for key in dictionary:
                 instance_list.append(str(dictionary[key]))
-            print(instance_list)
+            if len(instance_list) != 0:
+                print(instance_list)
         elif args[0] not in self.classes:
             print("** class doesn\'t exist **")
             return
