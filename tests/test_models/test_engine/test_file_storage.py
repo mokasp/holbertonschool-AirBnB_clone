@@ -28,28 +28,26 @@ class TestFileStorage(unittest.TestCase):
         else:
             pass
 
-    def test_filestoragetyppe(self):
-        """ test FileStorage initialization """
-        self.assertIsInstance(FileStorage(), FileStorage)
-
     def test_privateObjects(self):
         """ test to check if __objects is truly private """
         items = FileStorage()
         with self.assertRaises(AttributeError):
-            print(items.__objects)
+            if type(items.__objects) is dict:
+                pass
 
     def test_privateFile(self):
         """ tests to check if __file_path is truly private """
         stuff = FileStorage()
         with self.assertRaises(AttributeError):
-            print(stuff.__file_path)
+            if type(stuff.__file_path) is str:
+                pass
 
     def test_all(self):
         """ tests to check if all method returns a dictionary """
         thing = FileStorage()
         self.assertIsInstance(thing.all(), dict)
 
-    def test_new(self):
+    def test_basemodelnew(self):
         """ test for new method """
         new_storage = FileStorage()
         old = new_storage.all()
@@ -57,6 +55,15 @@ class TestFileStorage(unittest.TestCase):
         new_storage.save()
         new = new_storage.all()
         self.assertNotEqual(new, old)
+
+    def test_filestoragenew(self):
+        """ test that direct call to new works """
+        obj = BaseModel()
+        new_storage = FileStorage
+        new_storage.__objects = {}
+        old = new_storage.__objects
+        new_storage.new(obj)
+        self.assertNotEqual(new_storage.all(), old)
 
     def test_reload(self):
         """ test for reload method"""
