@@ -7,6 +7,9 @@
 [Contact Us](https://github.com/michaellgans/holbertonschool-AirBnB_clone/blob/main/AUTHORS)
 
 ## AirB&B - Looking Ahead
+<p align="center">
+  <img src="https://github.com/michaellgans/holbertonschool-AirBnB_clone/assets/131380667/3462933e-8dab-49cc-91e9-772892287803" alt="Pic1" width="75%">
+</p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;The AirB&B website allows users to either list properties they would like to host on the website, or browse properties they would like to rent for a vacation!  The overarching project is broken down into six layers: <br>
 
@@ -54,11 +57,10 @@
 
 <details><summary>Web Dynamic</summary>
 
-&nbsp;&nbsp;&nbsp;&nbsp;Title Goes Here<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The final step is to use Javascript to make the website dynamic!<br>
 - Learning Objectvies
-  - HTML/CSS
-  - Create the HTML of your application.
-  - Create the template of each object.</details>
+  - JQuery/Javascript
+  - Load objects from the user via the RESTful API.</details>
 
 ## AirB&B - The Console
 
