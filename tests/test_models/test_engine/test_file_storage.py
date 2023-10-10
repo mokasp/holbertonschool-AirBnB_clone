@@ -76,17 +76,23 @@ class TestFileStorage(unittest.TestCase):
         new = reload_storage_2.all()
         self.assertNotEqual(new, old)
 
-    def test_destroy(self):
+    def test_destroythis(self):
         """ test to check destroy helper method """
         new_storage = FileStorage()
         obj = BaseModel()
         key = f"BaseModel.{obj.id}"
-        new_storage.save()
         old = new_storage.all()
         new_storage.destroy_this(key)
-        new_storage.save()
         new = new_storage.all()
         self.assertNotEqual(new, old)
+
+    def test_save(self):
+        save_storage = FileStorage()
+        if os.path.exists("file.json"):
+            os.remove("file.json")
+        BaseModel()
+        save_storage.save()
+        self.assertEqual(os.path.exists("file.json"), True)
 
 
 if __name__ == "__main__":
