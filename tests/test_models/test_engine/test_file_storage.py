@@ -32,7 +32,8 @@ class TestFileStorage(unittest.TestCase):
         """ test to check if __objects is truly private """
         items = FileStorage()
         with self.assertRaises(AttributeError):
-            print(items.__objects)
+            if type(items.__objects) is str:
+                pass
 
     def test_privateFile(self):
         """ tests to check if __file_path is truly private """
@@ -74,7 +75,6 @@ class TestFileStorage(unittest.TestCase):
         reload_storage_2.reload()
         new = reload_storage_2.all()
         self.assertNotEqual(new, old)
-
 
 if __name__ == 'main__':
     unittest.main()
