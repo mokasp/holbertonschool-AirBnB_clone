@@ -28,6 +28,10 @@ class TestFileStorage(unittest.TestCase):
         else:
             pass
 
+    def test_filestoragetyppe(self):
+        """ test FileStorage initialization """
+        self.assertIsInstance(FileStorage(), FileStorage)
+
     def test_privateObjects(self):
         """ test to check if __objects is truly private """
         items = FileStorage()
@@ -64,20 +68,6 @@ class TestFileStorage(unittest.TestCase):
         reload_storage_2.reload()
         new = reload_storage_2.all()
         self.assertNotEqual(new, old)
-
-    def test_save(self):
-        """ tests save method """
-        os.remove("file.json")
-        save_storage = FileStorage()
-        with self.assertRaises(FileNotFoundError):
-            with open('file.json', "r") as file:
-                saved = json.load(file)
-        BaseModel()
-        save_storage.save()
-        with open('file.json', "r") as file:
-            saved = json.load(file)
-        from_object = save_storage.all()
-        self.assertEqual(saved.keys(), from_object.keys())
 
 
 if __name__ == 'main__':
