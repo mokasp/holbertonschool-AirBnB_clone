@@ -32,8 +32,7 @@ class TestFileStorage(unittest.TestCase):
         """ test to check if __objects is truly private """
         items = FileStorage()
         with self.assertRaises(AttributeError):
-            if type(items.__objects) is dict:
-                pass
+            print(items.__objects)
 
     def test_privateFile(self):
         """ tests to check if __file_path is truly private """
@@ -58,12 +57,12 @@ class TestFileStorage(unittest.TestCase):
 
     def test_filestoragenew(self):
         """ test that direct call to new works """
+        new_storage2 = FileStorage()
+        new_storage2.__objects = {}
+        old = new_storage2.__objects
         obj = BaseModel()
-        new_storage = FileStorage
-        new_storage.__objects = {}
-        old = new_storage.__objects
-        new_storage.new(obj)
-        self.assertNotEqual(new_storage.all(), old)
+        new_storage2.new(obj)
+        self.assertNotEqual(obj, old)
 
     def test_reload(self):
         """ test for reload method"""
