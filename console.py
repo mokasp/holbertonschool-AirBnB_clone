@@ -216,7 +216,7 @@ class HBNBCommand(cmd.Cmd):
             elif isinstance(object_dict.get(key), int):
                 attribute_value = int(attribute_value)
             elif isinstance(object_dict.get(key), float):
-                attribute_value = float(attribute_value) 
+                attribute_value = float(attribute_value)
         setattr(the_object, attribute_key, attribute_value)
         models.storage.save()
 

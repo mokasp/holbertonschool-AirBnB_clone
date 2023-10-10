@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ module containing class FileStorage that serializes and deserializes
     objects to and from Python and JSON """
-# Michael edited at 11:09am 10/8/23
 import models
 import datetime
 import json

@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ Module containing the class User """
-# kasper 10:05 10/8/23
 import models
 from models.base_model import BaseModel
 
