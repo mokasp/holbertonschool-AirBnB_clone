@@ -213,7 +213,7 @@ class HBNBCommand(cmd.Cmd):
             if isinstance(object_dict.get(attribute_key), str):
                 attribute_value = str(attribute_value)
             elif isinstance(object_dict.get(attribute_key), int):
-                attribute_value = int(attribute_value)
+                attribute_value = int(float(attribute_value))
             elif isinstance(object_dict.get(attribute_key), float):
                 attribute_value = float(attribute_value)
         setattr(the_object, attribute_key, attribute_value)
