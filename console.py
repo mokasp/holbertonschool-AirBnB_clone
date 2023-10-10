@@ -182,21 +182,21 @@ class HBNBCommand(cmd.Cmd):
         to add a new attribute to an instance of the specific class.
         """
         args = line.split()
-        key = f"{args[0]}.{args[1]}"
         dictionary = models.storage.all()
         if len(line) == 0:
             print("** class name missing **")
             return
-        elif args[0] not in self.classes:
-            print("** class doesn\'t exist **")
+        elif args[0] not in self.classes.keys():
+            print("** class doesn't exist **")
             return
         elif len(args) == 1:
             print("** instance id missing **")
             return
-        elif key not in dictionary:
+        key = f"{args[0]}.{args[1]}"
+        if key not in dictionary:
             print("** no instance found **")
             return
-        elif len(args) == 2:
+        if len(args) == 2:
             print("** attribute name missing **")
             return
         elif len(args) == 3:
@@ -207,17 +207,17 @@ class HBNBCommand(cmd.Cmd):
         class_name = object_to_dict.get('__class__')
         object_dict = self.classes[class_name].__dict__
         strings = re.findall('"([^"]*)"', line)
-        key = args[2]
-        value = strings[0]
+        attribute_key = args[2]
+        attribute_value = strings[0]
         if key in object_dict:
-            print(value)
+            print(attribute_value)
             if isinstance(object_dict.get(key), str):
-                value = str(value)
+                attribute_value = str(attribute_value)
             elif isinstance(object_dict.get(key), int):
-                value = int(value)
+                attribute_value = int(attribute_value)
             elif isinstance(object_dict.get(key), float):
-                value = float(value) 
-        setattr(the_object, key, value)
+                attribute_value = float(attribute_value) 
+        setattr(the_object, attribute_key, attribute_value)
         models.storage.save()
 
 
