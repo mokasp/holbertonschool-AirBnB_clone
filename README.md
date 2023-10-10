@@ -37,13 +37,20 @@
   - Design and create a database for storage.
   - Map our models to a table in the database using Object-Relational Mapping (ORM).</details>
 
+<details><summary>Web Framework - Templating</summary>
+
+&nbsp;&nbsp;&nbsp;&nbsp;The fourth step is to create a webserver using Python and Flask.  This will link the storage engine and the static website.<br>
+- Learning Objectvies
+  - Understand how to use Flask.
+  - Create our first web server in Python.</details>
+
 <details><summary>RESTful API</summary>
 
-&nbsp;&nbsp;&nbsp;&nbsp;Title Goes Here<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The fifth step is to expose the objects stored in a JSON web interface.<br>
 - Learning Objectvies
-  - HTML/CSS
-  - Create the HTML of your application.
-  - Create the template of each object.</details>
+  - What is an API?
+  - Link JSON web interface to the database.
+  - Manipulate objects via RESTful API and Flask.</details>
 
 <details><summary>Web Dynamic</summary>
 
