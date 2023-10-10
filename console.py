@@ -144,11 +144,10 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
         key = f"{args[0]}.{args[1]}"
-        try:
-            dictionary = models.storage.all()
-            dictionary.pop(key)
+        if key in models.storage.all():
+            models.storage.destroy_this(key)
             models.storage.save()
-        except KeyError:
+        else:
             print("** no instance found **")
 
     def do_all(self, line):

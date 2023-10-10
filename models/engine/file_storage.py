@@ -40,6 +40,8 @@ class FileStorage():
         Serializes __objects to JSON file.
     reload():
         If JSON file exists, deserializes JSON file back to __objects
+    destroy_this():
+        deletes an item for __objects dictionary
     """
     __file_path = "file.json"
     __objects = {}
@@ -64,10 +66,9 @@ class FileStorage():
 
     def save(self):
         """ Serializes Python objects to JSON file """
-        objects_copy = self.__objects.copy()
         new_dictionary = {}
-        for key in objects_copy:
-            python_obj = objects_copy.get(key)
+        for key in self.__objects:
+            python_obj = self.__objects.get(key)
             new_dictionary[key] = python_obj.to_dict()
         with open(self.__file_path, "w") as file:
             json.dump(new_dictionary, file)
@@ -95,3 +96,10 @@ class FileStorage():
                 self.__objects = loaded
         else:
             pass
+
+    def destroy_this(self, key):
+        """ removes a key value pair stored in __objects """
+        if key in self.__objects:
+            self.__objects.pop(key)
+        else:
+            return
