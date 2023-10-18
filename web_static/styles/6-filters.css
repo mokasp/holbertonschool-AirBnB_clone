@@ -60,6 +60,7 @@ when Location is hovered over */
     border-radius: 4px;
     position: relative;
     margin-top: -1px;
+    padding-bottom: 15px;
 }
 
 /* Level 2 Headings */
@@ -80,6 +81,11 @@ h4 {
     font-size: 14px;
     margin-left: 30px;
     margin-top: -10px;
+}
+
+li {
+    margin-left: 30px;
+    margin-top: 5px;
 }
 
 /* Unordered Lists */
