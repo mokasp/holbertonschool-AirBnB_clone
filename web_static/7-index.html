@@ -1,82 +1,73 @@
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr">
     <head>
-        <title>Holberton School</title>
-
-        <!-- Stylesheets -->
-        <link rel="stylesheet" href="styles/4-common.css">
-        <link rel="stylesheet" href="styles/3-header.css">
-        <link rel="stylesheet" href="styles/3-footer.css">
-        <link rel="stylesheet" href="styles/6-filters.css">
-        <link rel="stylesheet" href="styles/7-places.css">
-
-        <!-- Favicon Image Link -->
-        <link rel="icon" type="image/x-icon" href="images/icon.png">
-
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <title>AirBnB clone</title>
+        <link rel='stylesheet' href='styles/4-common.css'>
+        <link rel='stylesheet' href='styles/3-header.css'>
+        <link rel='stylesheet' href='styles/3-footer.css'>
+        <link rel='stylesheet' href='styles/6-filters.css'>
+        <link rel='stylesheet' href='styles/7-places.css'>
     </head>
     <body>
         <header>
-            <!-- Logo Image -->
-            <div class="header-logo"></div>        
+            <div class="icon"></div>
         </header>
-
-        <!-- Filter Section -->
-        <div class="container">
-            <section class="filters">
-
-                <!-- State Drop Down -->
-                <div class="locations">
-                    <h3>States</h3>
-                    <h4>Example: TX</h4>
-                    <div>
+        <main>
+            <div class="container">
+                <section class="filters">
+                    <div class="locations">
+                        <h3>States</h3>
+                        <h4>Oregan, Florida, Ala...</h4>
                         <ul class="popover">
-                            <h2>Texas:</h2>
-                                <li>Dallas</li>
-                                <li>Houston</li>
-                            <h2>Oklahoma:</h2>
-                                <li>Tulsa</li>
-                                <li>OKC</li>
+                            <li>
+                                <h2>Oregan
+                                    <ul>
+                                        <li>Page 1</li>
+                                        <li>Page 2</li>
+                                    </ul>
+                                </h2>
+                            </li>
+                            <li>
+                                <h2>Florida:
+                                    <ul>
+                                        <li>Tampa</li>
+                                        <li>Sarasota</li>
+                                    </ul>
+                                </h2>
+                            </li>
                         </ul>
                     </div>
-                </div>
-
-                <!-- Amenities Drop Down -->
-                <div class="amenities">
-                    <h3>Amenities</h3>
-                    <h4>Example: pool</h4>
-                    <div>
+                    <div class="amenities">
+                        <h3>Amenities</h3>
+                        <h4>Internet, Kitche...</h4>
                         <ul class="popover">
-                            <h2>Pool:</h2>
-                                <li>Yes</li>
-                                <li>No</li>
-                            <h2>Pets:</h2>
-                                <li>Allowed</li>
-                                <li>Not Allowed</li>
+                            <li>Internet</li>
+                            <li>TV</li>
+                            <li>Kitchen</li>
+                            <li>Iron</li>
                         </ul>
                     </div>
-                </div>
-
-                <!-- Search Button -->
-                <button>Search</button>
-            </section>
-            <div class="places-helper">
+                    <button>Search</button>
+                </section>
                 <section class="places">
                     <h1>Places</h1>
-                    <article>
-                        <h2>My Home</h2>
-                    </article>
-                    <article>
-                        <h2>Tiny Home</h2>
-                    </article>
-                    <article>
-                        <h2>Box with Wheels</h2>
-                    </article>
+                    <div class="boxes">
+                        <article class="left">
+                            <h2>Fraggle Rock</h2>
+                        </article>
+                        <article class="right">
+                            <h2>Light house</h2>
+                        </article>
+                        <article class="centered">
+                            <h2>empty blockbuster video</h2>
+                        </article>
+                    </div>
                 </section>
             </div>
-        </div>
+        </main>
         <footer>
-            Best School
+            Holberton School
         </footer>
     </body>
-</html>
