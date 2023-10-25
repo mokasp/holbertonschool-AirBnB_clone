@@ -1,0 +1,13 @@
+header {
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border-bottom: solid 1px #CCCCCC;
+    content: " " url("../images/logo.png");
+    padding-left: 1rem;
+}
+
+.icon::before {
+    content: " " url("../images/logo.png");
+    padding-left: 1rem;
+}
